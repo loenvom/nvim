@@ -12,4 +12,5 @@ lua require('plugin-config/nvim-tree')
 
 set background=dark
 colorscheme nord
-syntax on
+
+let g:airline_theme='nord_minimal'

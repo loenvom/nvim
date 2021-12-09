@@ -10,6 +10,7 @@ local opt = {
     silent = true
 }
 
+map("n", "<Capslock>", "<Esc>", opt)
 
 -- ctrl + m/h 展示目录
 map("n", "<C-m>", ":NvimTreeFocus<CR>", opt)

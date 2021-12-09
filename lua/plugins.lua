@@ -12,4 +12,7 @@ return require('packer').startup(function()
   }
 
   use {'neoclide/coc.nvim', branch = 'release'}
+
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
 end)
