@@ -50,6 +50,10 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+-- terminal --
+-- Esc to back normal --
+keymap("t", "<Esc>", "<C-\\><C-n>")
+
 -- Plugins --
 
 -- NvimTree
