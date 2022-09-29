@@ -53,6 +53,7 @@ keymap("v", ">", ">gv", opts)
 -- terminal --
 -- Esc to back normal --
 keymap("t", "<Esc>", "<C-\\><C-n>")
+keymap("t", "<leader>t", ":ToggleTerm<CR>")
 
 -- Plugins --
 
