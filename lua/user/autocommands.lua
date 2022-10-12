@@ -9,6 +9,11 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+-- use <leader>p to paste image in markdown edit
+vim.cmd [[
+  autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+]]
+
 -- Remove statusline and tabline when in Alpha
 vim.api.nvim_create_autocmd({ "User" }, {
   pattern = { "AlphaReady" },
