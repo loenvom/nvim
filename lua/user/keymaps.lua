@@ -64,6 +64,8 @@ keymap("t", "<leader>t", ":ToggleTerm<CR>")
 
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+
+-- terminal
 keymap("n", "<leader>t", ":ToggleTerm<CR>", opts)
 
 -- Telescope
@@ -76,8 +78,8 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 
 -- Comment
-keymap("n", "<leader>/", "<cmd>lua require('comment.api').toggle.line.current()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("comment.api").toggle.block(vim.fn.visualmode())<CR>')
+--[[ keymap("n", "<leader>/", "<cmd>lua require('comment.api').toggle.linewise()<CR>", opts) ]]
+--[[ keymap("x", "<leader>/", '<ESC><CMD>lua require("comment.api").toggle.blockwise(vim.fn.visualmode())<CR>') ]]
 
 -- DAP
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)

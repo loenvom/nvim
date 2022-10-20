@@ -1,5 +1,4 @@
 local M = {}
-
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
   return
@@ -51,16 +50,29 @@ M.setup = function()
   })
 end
 
+--[[ M.format = function()
+  vim.lsp.buf.format {
+    sync = true,
+    filter = function(client)
+      print(client)
+      return client.name ~= "tsserver"
+    end
+  }
+end ]]
+
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
   local keymap = vim.api.nvim_buf_set_keymap
+
   keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
   keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
+  --[[ vim.keymap.set('n', '<leader>lf', M.format, opts) ]]
+  keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format { sync = true }<cr>", opts)
+  -- keymap(bufnr, "n", "<leader>lf", "<cmd>lua require('user.lsp.settings.handlers').format()<CR>", opts)
   keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
   keymap(bufnr, "n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
   keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
