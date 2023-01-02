@@ -12,7 +12,7 @@ telescope.setup {
     selection_caret = " ",
     path_display = { "smart" },
     file_ignore_patterns = { ".git/", "node_modules" },
-
+    borderchars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
     mappings = {
       i = {
         ["<Down>"] = actions.cycle_history_next,

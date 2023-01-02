@@ -22,6 +22,7 @@ local conds = require("luasnip.extras.expand_conditions")
 ls.add_snippets("go", {
   s("main", {
     t({"package main", ""}),
+    t({"", ""}),
     t({"func main() {", ""}),
     t("\t"),
     i(0),

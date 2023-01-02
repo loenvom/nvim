@@ -22,6 +22,9 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- close window
+keymap("n", "<C-q>", "<C-w>c", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -32,15 +35,15 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 
+-- Clear highlights
+keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+
 -- Save with Ctril-S
-keymap("n", "<C-s>", ":w<CR>", opts)
-keymap("i", "<C-s>", "<Esc>:w<CR>", opts)
+keymap("n", "<C-s>", "<cmd>lua vim.lsp.buf.format { sync = true }<cr>:w<CR>", opts)
+keymap("i", "<C-s>", "<cmd>lua vim.lsp.buf.format { sync = true }<cr><Esc>:w<CR>", opts)
 
 -- Better paste
 keymap("v", "p", '"_dP', opts)
@@ -48,7 +51,7 @@ keymap("v", "p", '"_dP', opts)
 
 -- Insert --
 -- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+-- keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -56,14 +59,14 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- terminal --
--- Esc to back normal --
-keymap("t", "<Esc>", "<C-\\><C-n>")
-keymap("t", "<leader>t", ":ToggleTerm<CR>")
+-- Esc to exit terminal mode --
+keymap("t", "<Esc>", "<C-\\><C-n>:ToggleTerm<CR>")
 
 -- Plugins --
 
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<ESC>", ":NvimTreeClose<CR>", opts)
 
 -- terminal
 keymap("n", "<leader>t", ":ToggleTerm<CR>", opts)
@@ -76,10 +79,6 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-
--- Comment
---[[ keymap("n", "<leader>/", "<cmd>lua require('comment.api').toggle.linewise()<CR>", opts) ]]
---[[ keymap("x", "<leader>/", '<ESC><CMD>lua require("comment.api").toggle.blockwise(vim.fn.visualmode())<CR>') ]]
 
 -- DAP
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
